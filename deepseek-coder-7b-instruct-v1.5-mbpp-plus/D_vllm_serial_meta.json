@@ -1,0 +1,48 @@
+{
+  "mode": "D_vllm_serial",
+  "backend": "vllm",
+  "mode_settings": {
+    "backend": "vllm",
+    "max_num_seqs": 1,
+    "enforce_eager": true
+  },
+  "config": {
+    "model": {
+      "name_or_path": "deepseek-ai/deepseek-coder-7b-instruct-v1.5",
+      "tensor_parallel_size": 1,
+      "dtype": "bfloat16",
+      "gpu_memory_utilization": 0.4,
+      "enforce_eager": true,
+      "max_model_len": 4096,
+      "max_num_seqs": 256
+    },
+    "generation": {
+      "temperature": 0.0,
+      "max_new_tokens": 1024,
+      "num_samples": 1,
+      "transformers_batch_size": 8,
+      "seed": 42
+    },
+    "eval": {
+      "dataset": "mbpp",
+      "subset": "plus"
+    },
+    "output": {
+      "dir": "./deepseek-coder-7b-instruct-v1.5-mbpp-plus"
+    }
+  },
+  "env": {
+    "label": "D_vllm_serial",
+    "torch_version": "2.11.0+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "device_name": "NVIDIA RTX A6000",
+    "device_count": 1,
+    "transformers_version": "5.8.0",
+    "vllm_version": "0.20.1",
+    "flash_attn_version": null
+  },
+  "num_tasks": 378,
+  "elapsed_seconds": 2046.8402872085571,
+  "dry_run": false
+}
